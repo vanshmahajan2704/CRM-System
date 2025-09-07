@@ -16,7 +16,7 @@ import leadRoutes from './routes/leads.js';
 import taskRoutes from './routes/tasks.js';
 import activityRoutes from './routes/activity.js';
 import dashboardRoutes from './routes/dashboard.js';
-import agentRoutes from './routes/agents.js'; // ✅ ADD THIS IMPORT
+//import agentRoutes from './routes/agents.js'; // ✅ ADD THIS IMPORT
 
 dotenv.config();
 
@@ -42,7 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 1000 // limit each IP to 100 requests per window
+  max: 4000 // limit each IP to 100 requests per window
 });
 app.use(limiter);
 
@@ -54,7 +54,7 @@ app.use('/api/leads', leadRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/activity', activityRoutes);
 app.use('/api/dashboard', dashboardRoutes);
-app.use('/api/agents', agentRoutes); // ✅ ADD THIS LINE
+//app.use('/api/agents', agentRoutes); // ✅ ADD THIS LINE
 
 // Basic root route
 app.get('/', (req, res) => {
